@@ -1,4 +1,5 @@
 import org.LukasM.Address;
+import org.LukasM.Department;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import static org.junit.Assert.assertEquals;
@@ -34,4 +35,25 @@ public class FinalProjectTest {
         assertEquals(expected, actual);
 
     }
+
+    @Test
+    @DisplayName("Computer Science1 -> False")
+    public void isDepartmentNameValid1() {
+        String departmentName = "Computer Science1";
+        boolean expected = false;
+        boolean actual = Department.isDepartmentNameValid(departmentName);
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    @DisplayName("Computer Science -> True")
+    public void isDepartmentNameValid2() {
+        String departmentName = "Computer Science";
+        boolean expected = true;
+        boolean actual = Department.isDepartmentNameValid(departmentName);
+        assertEquals(expected, actual);
+
+    }
+
 }
