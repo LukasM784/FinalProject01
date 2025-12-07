@@ -17,6 +17,11 @@ public class Address {
     private Province province;
     private String postalCode;
 
+    /**
+     * Checks to see if the postal code is valid
+     * @param postalCode this is the postal code that is being checked
+     * @return true is the code is valid and false if it's invalid
+     */
     public static boolean isPostalCodeValid(String postalCode) {
         if (postalCode.length() != 6) {
             return false;
@@ -33,8 +38,26 @@ public class Address {
         return true;
     }
 
-    public enum Province {
-        AB, BC, MB, NB, NL, NS, ON, PE, QC, SK
+    public Address(String street, String postalCode, Province province, String city, int streetNo) {
+        if (isPostalCodeValid(postalCode)) {
+            this.street = street;
+            this.postalCode = postalCode;
+            this.province = province;
+            this.city = city;
+            this.streetNo = streetNo;
+        }
+        else {
+            this.street = null;
+            this.postalCode = null;
+            this.province = null;
+            this.city = null;
+            this.streetNo = 0;
+        }
+    }
 
+    public void setPostalCode(String postalCode) {
+        if (isPostalCodeValid(postalCode)) {
+            this.postalCode = postalCode.toUpperCase();
+        }
     }
 }
