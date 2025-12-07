@@ -13,9 +13,21 @@ public class Student {
 
 
 
-    public static boolean registerCourse(Course course) {
+    public boolean registerCourse(Course course) {
+        if (registeredCourses.contains(course)) {
+            return false;
+        }
+        registeredCourses.add(course);
+        course.getRegisteredStudents().add(this);
+
+        ArrayList<Assignment> assignments = course.getAssignments();
+        for (int i = 0; i < assignments.size(); i++) {
+            Assignment assignment = assignments.get(i);
+            assignment.getScores().add(null);
+        }
 
 
+        return true;
     }
 
 
