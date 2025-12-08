@@ -1,5 +1,6 @@
 import org.LukasM.Address;
 import org.LukasM.Department;
+import org.LukasM.Student;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import static org.junit.Assert.assertEquals;
@@ -55,5 +56,4 @@ public class FinalProjectTest {
         assertEquals(expected, actual);
 
     }
-
 }

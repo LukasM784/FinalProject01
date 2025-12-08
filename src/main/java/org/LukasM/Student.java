@@ -1,7 +1,13 @@
 package org.LukasM;
 
-import java.util.ArrayList;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.ArrayList;
+@EqualsAndHashCode
+@Getter
+@Setter
 public class Student {
     private String studentId;
     private String studentName;
@@ -26,9 +32,24 @@ public class Student {
             assignment.getScores().add(null);
         }
 
-
         return true;
     }
 
+    public boolean dropCourse(Course course) {
+        if (registeredCourses.contains(course)) {
+            return false;
+        }
+        registeredCourses.remove(course);
+        course.getRegisteredStudents().remove(this);
+        return true;
+    }
 
+    public Student(String studentName, Gender gender, Address address, Department department) {
+        this.studentName = studentName;
+        this.gender = gender;
+        this.address = address;
+        this.department = department;
+        this.studentId = String.format("S%05d", nextId++);
+        this.registeredCourses = new ArrayList<>();
+    }
 }
