@@ -52,4 +52,24 @@ public class Student {
         this.studentId = String.format("S%05d", nextId++);
         this.registeredCourses = new ArrayList<>();
     }
+
+
+    public String toSimplifiedString() {
+        return "Student{" +
+                "studentId='" + studentId + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", department=" + department +
+                '}';
+    }
+
+    public String toString() {
+        return "Student{" +
+                "studentId='" + studentId + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", gender=" + gender +
+                ", address=" + address +
+                ", department=" + department +
+                ", departmentName=" + registeredCourses +
+                '}';
+    }
 }
