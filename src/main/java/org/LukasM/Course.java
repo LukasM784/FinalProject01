@@ -6,6 +6,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+
+import static org.LukasM.Assignment.*;
+
+@AllArgsConstructor
 @EqualsAndHashCode
 @Getter
 @Setter
@@ -37,5 +41,19 @@ public class Course {
         return false;
     }
 
+    int[] calcStudentsAverage() {
+        int[] finalAverage = new int[registeredStudents.size()];
+        if (!isAssignmentWeightValid()) {
+            return finalAverage;
+        }
 
+        for (int i = 0; i < registeredStudents.size(); i ++) {
+            for (Assignment j : assignments) {
+                if (j.getScores() != null) {
+                    finalAverage[i] += (int) ((j.getScores().get(i) * j.getWeight()) / 100);
+                }
+            }
+        }
+        return finalAverage;
+    }
 }
