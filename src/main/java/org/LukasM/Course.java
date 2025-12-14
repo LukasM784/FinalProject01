@@ -29,4 +29,13 @@ public class Course {
         return true;
     }
 
+    public boolean registerStudent(Student student) {
+        if (student.registerCourse(this)) {
+            registeredStudents.add(null);
+            return true;
+        }
+        return false;
+    }
+
+
 }
