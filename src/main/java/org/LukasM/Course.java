@@ -1,5 +1,6 @@
 package org.LukasM;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,4 +17,16 @@ public class Course {
     private ArrayList<Student> registeredStudents;
     private ArrayList<Assignment> assignments;
     private static int nextId = 1;
+
+    public boolean isAssignmentWeightValid() {
+        int sum = 0;
+        for (Assignment a : assignments) {
+            sum += a.getWeight();
+        }
+        if (sum != 100) {
+            return false;
+        }
+        return true;
+    }
+
 }
