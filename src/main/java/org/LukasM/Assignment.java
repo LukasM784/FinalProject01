@@ -1,11 +1,12 @@
 package org.LukasM;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Random;
-
+@AllArgsConstructor
 @Getter
 @Setter
 public class Assignment {
@@ -13,12 +14,12 @@ public class Assignment {
     private String assignmentName;
     private double weight;
     private ArrayList<Integer> scores;
-    private static int nextId = 1;
+    public static int nextId = 1;
 
     public void calcAssignmentAvg() {
         int sum = 0;
         for (int i = 0; i < scores.size(); i++) {
-            sum += scores.get(i);
+             sum += scores.get(i);
         }
         int average = sum / scores.size();
     }
@@ -41,7 +42,7 @@ public class Assignment {
         return "Assignment{" +
                 "assignmentName='" + assignmentName + '\'' +
                 ", weight=" + weight +
-                ", assignmentId='" + assignmentId + '\'' +
+                ", assignmentId='" + String.format("%02d",nextId ++) + '\'' +
                 '}';
     }
 }

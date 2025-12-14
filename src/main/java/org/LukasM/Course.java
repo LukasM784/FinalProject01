@@ -56,4 +56,14 @@ public class Course {
         }
         return finalAverage;
     }
+
+    public boolean addAssignment(String assignmentName, double weight, int maxScore) {
+        String assignmentId = String.format("%02d", Assignment.nextId++);
+        Assignment newAssignment = new Assignment(assignmentId, assignmentName,weight,new ArrayList<>());
+        for (int i = 0; i< registeredStudents.size(); i++) {
+            newAssignment.getScores().add(null);
+        }
+        assignments.add(newAssignment);
+        return true;
+    }
 }
