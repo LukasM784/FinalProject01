@@ -66,4 +66,13 @@ public class Course {
         assignments.add(newAssignment);
         return true;
     }
+
+    public void generateScores() {
+        for (int i = 0; i < registeredStudents.size();i ++) {
+            for (Assignment j : assignments) {
+                j.generateRandomScore();
+            }
+        }
+        calcStudentsAverage();
+    }
 }
