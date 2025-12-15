@@ -38,7 +38,7 @@ public class Student {
     }
 
     public boolean dropCourse(Course course) {
-        if (registeredCourses.contains(course)) {
+        if (!registeredCourses.contains(course)) {
             return false;
         }
         registeredCourses.remove(course);

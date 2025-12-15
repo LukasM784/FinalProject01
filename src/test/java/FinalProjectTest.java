@@ -59,4 +59,42 @@ public class FinalProjectTest {
         assertEquals(expected,actual);
     }
 
+    @Test
+    @DisplayName("Register Course -> False")
+    public void isRegisterCourseValidTest2() {
+        Department d = new Department("Computer Science");
+        Address a = new Address();
+        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        Student s = new Student("Lukas",Gender.MALE, a, d);
+        s.registerCourse(c);
+        boolean expected = false;
+        boolean actual = s.registerCourse(c);
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    @DisplayName("Drop Course -> True")
+    public void isDropCourseValidTest1() {
+        Department d = new Department("Computer Science");
+        Address a = new Address();
+        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        Student s = new Student("Lukas",Gender.MALE, a, d);
+        s.registerCourse(c);
+        boolean expected = true;
+        boolean actual = s.dropCourse(c);
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    @DisplayName("Drop Course -> False")
+    public void isDropCourseValidTest2() {
+        Department d = new Department("Computer Science");
+        Address a = new Address();
+        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        Student s = new Student("Lukas",Gender.MALE, a, d);
+        boolean expected = false;
+        boolean actual = s.dropCourse(c);
+        assertEquals(expected,actual);
+    }
+
 }
