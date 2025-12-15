@@ -1,15 +1,12 @@
 package org.LukasM;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 import static org.LukasM.Assignment.*;
-
+@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
 @Getter
@@ -97,9 +94,28 @@ public class Course {
         }
         System.out.print("Average");
         for (Assignment a : assignments) {
-
             System.out.printf("%-15s",a.calcAssignmentAvg() );
         }
+    }
+
+    public String toSimplifiedString() {
+        return "Course{" +
+                "department=" + department +
+                ", courseName='" + courseName + '\'' +
+                ", courseId='" + String.format("C-%s-%01d", department.getDepartmentId(), nextId++) + '\'' +
+                '}';
+    }
+
+    public String toString() {
+        Student s = new Student();
+        return "Course{" +
+                "courseId='" + String.format("C-%s-%01d", department.getDepartmentId(), nextId++) + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", credits=" + credits +
+                ", assignments=" + assignments +
+                ", weight of the assignments is valid =" + isAssignmentWeightValid() +
+                s.toSimplifiedString() +
+                '}';
     }
 }
 

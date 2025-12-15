@@ -2,9 +2,11 @@ package org.LukasM;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
+@NoArgsConstructor
 @EqualsAndHashCode
 @Getter
 @Setter
@@ -58,18 +60,19 @@ public class Student {
         return "Student{" +
                 "studentId='" + studentId + '\'' +
                 ", studentName='" + studentName + '\'' +
-                ", department=" + department +
+                ", department=" + department.getDepartmentName() +
                 '}';
     }
 
     public String toString() {
+        Course c = new Course();
         return "Student{" +
                 "studentId='" + studentId + '\'' +
                 ", studentName='" + studentName + '\'' +
                 ", gender=" + gender +
                 ", address=" + address +
                 ", department=" + department +
-                ", departmentName=" + registeredCourses +
+                c.toSimplifiedString() +
                 '}';
     }
 }
