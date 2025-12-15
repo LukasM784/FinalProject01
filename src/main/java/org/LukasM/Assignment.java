@@ -18,6 +18,10 @@ public class Assignment {
     private ArrayList<Integer> scores;
     public static int nextId = 1;
 
+    /**
+     * Calculates the class average of the assignment
+     * @return the average of the assignment
+     */
     public int calcAssignmentAvg() {
         int sum = 0;
         for (int i = 0; i < scores.size(); i++) {
@@ -26,6 +30,9 @@ public class Assignment {
         return sum / scores.size();
     }
 
+    /**
+     * Randomly generates the scores for the assignment
+     */
     public void generateRandomScore() {
         Random random = new Random(0);
         int num = random.nextInt(11);

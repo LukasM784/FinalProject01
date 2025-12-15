@@ -19,8 +19,11 @@ public class Student {
     private ArrayList<Course> registeredCourses;
     private static int nextId = 1;
 
-
-
+    /**
+     * Registers the student to the course
+     * @param course the course the student is being registered in
+     * @return if it was able to register the student
+     */
     public boolean registerCourse(Course course) {
         if (registeredCourses.contains(course)) {
             return false;
@@ -37,6 +40,11 @@ public class Student {
         return true;
     }
 
+    /**
+     * Drops the student from the course
+     * @param course the course the student is dropping
+     * @return if the student was able to drop the course or not
+     */
     public boolean dropCourse(Course course) {
         if (!registeredCourses.contains(course)) {
             return false;

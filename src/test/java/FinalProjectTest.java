@@ -1,14 +1,11 @@
 import org.LukasM.*;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
-
 import java.util.ArrayList;
-
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class FinalProjectTest {
-
 
     @Test
     @DisplayName("A1B1C -> False")
@@ -180,6 +177,4 @@ public class FinalProjectTest {
         int[] actual = c.calcStudentsAverage();
         assertArrayEquals(expected,actual);
     }
-
-
 }
