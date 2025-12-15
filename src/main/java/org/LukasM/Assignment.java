@@ -17,6 +17,7 @@ public class Assignment {
     private double weight;
     private ArrayList<Integer> scores;
     public static int nextId = 1;
+
     public int calcAssignmentAvg() {
         int sum = 0;
         for (int i = 0; i < scores.size(); i++) {

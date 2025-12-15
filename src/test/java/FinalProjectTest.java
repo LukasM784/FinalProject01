@@ -97,4 +97,52 @@ public class FinalProjectTest {
         assertEquals(expected,actual);
     }
 
+    @Test
+    @DisplayName("Register Student -> True")
+    public void isAssignmentWeightValidTest1() {
+        Department d = new Department("Computer Science");
+        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        c.addAssignment("Assignment1", 50,100);
+        c.addAssignment("Assignment1", 50,100);
+        boolean expected = true;
+        boolean actual = c.isAssignmentWeightValid();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    @DisplayName("Register Student -> False")
+    public void isAssignmentWeightValidTest2() {
+        Department d = new Department("Computer Science");
+        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        c.addAssignment("Assignment1", 50,100);
+        boolean expected = false;
+        boolean actual = c.isAssignmentWeightValid();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    @DisplayName("Register Student -> True")
+    public void isRegisterStudentValidTest1() {
+        Department d = new Department("Computer Science");
+        Address a = new Address();
+        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        Student s = new Student("Lukas",Gender.MALE, a, d);
+        boolean expected = true;
+        boolean actual = c.registerStudent(s);
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    @DisplayName("Register Student -> False")
+    public void isRegisterStudentValidTest2() {
+        Department d = new Department("Computer Science");
+        Address a = new Address();
+        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        Student s = new Student("Lukas",Gender.MALE, a, d);
+        c.registerStudent(s);
+        boolean expected = false;
+        boolean actual = c.registerStudent(s);
+        assertEquals(expected,actual);
+    }
+
 }
