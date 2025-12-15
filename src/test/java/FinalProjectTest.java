@@ -145,4 +145,17 @@ public class FinalProjectTest {
         assertEquals(expected,actual);
     }
 
+    @Test
+    @DisplayName("Register Student -> True")
+    public void isAddAssignmentValidTest1() {
+        String assignmentName = "Computer Science";
+        double weight = 50;
+        int maxScore = 100;
+        Department d = new Department("Computer Science");
+        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        boolean expected = true;
+        boolean actual = c.addAssignment(assignmentName, weight, maxScore);
+        assertEquals(expected,actual);
+    }
+
 }
