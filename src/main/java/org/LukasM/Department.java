@@ -31,7 +31,7 @@ public class Department {
     public Department(String departmentName) {
         if (isDepartmentNameValid(departmentName)) {
             this.departmentName = departmentName;
-            this.departmentId = String.format("D%02s", nextId++);
+            this.departmentId = String.format("D%02d", nextId++);
         }
         else {
             this.departmentName = null;

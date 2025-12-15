@@ -1,8 +1,8 @@
-import org.LukasM.Address;
-import org.LukasM.Department;
-import org.LukasM.Student;
+import org.LukasM.*;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+
+import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 
 public class FinalProjectTest {
@@ -39,7 +39,7 @@ public class FinalProjectTest {
 
     @Test
     @DisplayName("Computer Science1 -> False")
-    public void isDepartmentNameValid1() {
+    public void isDepartmentNameValidTest1() {
         String departmentName = "Computer Science1";
         boolean expected = false;
         boolean actual = Department.isDepartmentNameValid(departmentName);
@@ -48,12 +48,15 @@ public class FinalProjectTest {
     }
 
     @Test
-    @DisplayName("Computer Science -> True")
-    public void isDepartmentNameValid2() {
-        String departmentName = "Computer Science";
+    @DisplayName("Register Course -> True")
+    public void isRegisterCourseValidTest1() {
+        Department d = new Department("Computer Science");
+        Address a = new Address();
+        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        Student s = new Student("Lukas",Gender.MALE, a, d);
         boolean expected = true;
-        boolean actual = Department.isDepartmentNameValid(departmentName);
-        assertEquals(expected, actual);
-
+        boolean actual = s.registerCourse(c);
+        assertEquals(expected,actual);
     }
+
 }

@@ -2,10 +2,7 @@ package org.LukasM;
 
 import lombok.*;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-
-import static org.LukasM.Assignment.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
