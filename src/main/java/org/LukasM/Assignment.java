@@ -15,13 +15,12 @@ public class Assignment {
     private double weight;
     private ArrayList<Integer> scores;
     public static int nextId = 1;
-
-    public void calcAssignmentAvg() {
+    public int calcAssignmentAvg() {
         int sum = 0;
         for (int i = 0; i < scores.size(); i++) {
              sum += scores.get(i);
         }
-        int average = sum / scores.size();
+        return sum / scores.size();
     }
 
     public void generateRandomScore() {

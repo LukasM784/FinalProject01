@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 import static org.LukasM.Assignment.*;
@@ -41,7 +42,7 @@ public class Course {
         return false;
     }
 
-    int[] calcStudentsAverage() {
+    public int[] calcStudentsAverage() {
         int[] finalAverage = new int[registeredStudents.size()];
         if (!isAssignmentWeightValid()) {
             return finalAverage;
@@ -75,4 +76,30 @@ public class Course {
         }
         calcStudentsAverage();
     }
+
+    public void displayScores() {
+        int[] finalAverages = calcStudentsAverage();
+        System.out.printf("Course: %s(%s)",courseName,String.format("C-%s-%01d",department.getDepartmentId(),nextId++));
+        System.out.printf("%-25s","");
+        for (Assignment assignment : assignments) {
+            System.out.printf("%-15s",assignment.getAssignmentName());
+        }
+        System.out.printf("%-15s","Final Score");
+        for (int i = 0; i < registeredStudents.size(); i++) {
+            Student s = registeredStudents.get(i);
+            System.out.printf("%-25s",s.getStudentName());
+
+            for (Assignment a : assignments) {
+                Integer score = a.getScores().get(i);
+                System.out.printf("%-15d",score);
+            }
+            System.out.printf("%-15d",finalAverages[i]);
+        }
+        System.out.print("Average");
+        for (Assignment a : assignments) {
+
+            System.out.printf("%-15s",a.calcAssignmentAvg() );
+        }
+    }
 }
+
