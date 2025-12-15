@@ -3,6 +3,8 @@ import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class FinalProjectTest {
@@ -52,7 +54,7 @@ public class FinalProjectTest {
     public void isRegisterCourseValidTest1() {
         Department d = new Department("Computer Science");
         Address a = new Address();
-        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        Course c = new Course(null, "Computer", 5, d, new ArrayList<>(), new ArrayList<>());
         Student s = new Student("Lukas",Gender.MALE, a, d);
         boolean expected = true;
         boolean actual = s.registerCourse(c);
@@ -64,7 +66,7 @@ public class FinalProjectTest {
     public void isRegisterCourseValidTest2() {
         Department d = new Department("Computer Science");
         Address a = new Address();
-        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        Course c = new Course(null, "Computer", 5, d, new ArrayList<>(), new ArrayList<>());
         Student s = new Student("Lukas",Gender.MALE, a, d);
         s.registerCourse(c);
         boolean expected = false;
@@ -77,7 +79,7 @@ public class FinalProjectTest {
     public void isDropCourseValidTest1() {
         Department d = new Department("Computer Science");
         Address a = new Address();
-        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        Course c = new Course(null, "Computer", 5, d, new ArrayList<>(), new ArrayList<>());
         Student s = new Student("Lukas",Gender.MALE, a, d);
         s.registerCourse(c);
         boolean expected = true;
@@ -90,7 +92,7 @@ public class FinalProjectTest {
     public void isDropCourseValidTest2() {
         Department d = new Department("Computer Science");
         Address a = new Address();
-        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        Course c = new Course(null, "Computer", 5, d, new ArrayList<>(), new ArrayList<>());
         Student s = new Student("Lukas",Gender.MALE, a, d);
         boolean expected = false;
         boolean actual = s.dropCourse(c);
@@ -98,7 +100,7 @@ public class FinalProjectTest {
     }
 
     @Test
-    @DisplayName("Register Student -> True")
+    @DisplayName("Assignment Weight -> True")
     public void isAssignmentWeightValidTest1() {
         Department d = new Department("Computer Science");
         Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
@@ -110,10 +112,10 @@ public class FinalProjectTest {
     }
 
     @Test
-    @DisplayName("Register Student -> False")
+    @DisplayName("Assignment Weight -> False")
     public void isAssignmentWeightValidTest2() {
         Department d = new Department("Computer Science");
-        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        Course c = new Course(null, "Computer", 5, d, new ArrayList<>(), new ArrayList<>());
         c.addAssignment("Assignment1", 50,100);
         boolean expected = false;
         boolean actual = c.isAssignmentWeightValid();
@@ -125,7 +127,7 @@ public class FinalProjectTest {
     public void isRegisterStudentValidTest1() {
         Department d = new Department("Computer Science");
         Address a = new Address();
-        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        Course c = new Course(null, "Computer", 5, d, new ArrayList<>(), new ArrayList<>());
         Student s = new Student("Lukas",Gender.MALE, a, d);
         boolean expected = true;
         boolean actual = c.registerStudent(s);
@@ -137,7 +139,7 @@ public class FinalProjectTest {
     public void isRegisterStudentValidTest2() {
         Department d = new Department("Computer Science");
         Address a = new Address();
-        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        Course c = new Course(null, "Computer", 5, d, new ArrayList<>(), new ArrayList<>());
         Student s = new Student("Lukas",Gender.MALE, a, d);
         c.registerStudent(s);
         boolean expected = false;
@@ -146,16 +148,38 @@ public class FinalProjectTest {
     }
 
     @Test
-    @DisplayName("Register Student -> True")
+    @DisplayName("Add Assignment -> True")
     public void isAddAssignmentValidTest1() {
         String assignmentName = "Computer Science";
         double weight = 50;
         int maxScore = 100;
         Department d = new Department("Computer Science");
-        Course c = new Course(null, "Computer", 50, d, new ArrayList<>(), new ArrayList<>());
+        Course c = new Course(null, "Computer", 5, d, new ArrayList<>(), new ArrayList<>());
         boolean expected = true;
         boolean actual = c.addAssignment(assignmentName, weight, maxScore);
         assertEquals(expected,actual);
     }
+
+    @Test
+    @DisplayName("Register Student -> True")
+    public void isCalcStudentAverageValidTest1() {
+        Department d = new Department("Computer Science");
+        Address a = new Address();
+        Course c = new Course(null, "Computer", 5, d, new ArrayList<>(), new ArrayList<>());
+        Student s = new Student("Lukas",Gender.MALE, a, d);
+        Assignment a1 = new Assignment(null,"Assignment1", 50,new ArrayList<>());
+        Assignment a2 = new Assignment(null,"Assignment1", 50,new ArrayList<>());
+        s.registerCourse(c);
+        c.getAssignments().add(a1);
+        c.getAssignments().add(a2);
+
+        a1.getScores().add(0,80);
+        a2.getScores().add(0,70);
+
+        int[] expected = {75};
+        int[] actual = c.calcStudentsAverage();
+        assertArrayEquals(expected,actual);
+    }
+
 
 }
